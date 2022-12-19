@@ -7,22 +7,19 @@
 <ion-content>
   <div class="main-container">
     <div class="title-container">
-        <p>So you're looking for a place to game at </p> 
+      <p>Welcome back to the link gamer</p> 
     </div>
     <div class="form-container">
         <div class="username-container"><p>username</p>
             <input id ="user" type="text" placeholder="Be Creative"> 
         </div>
-        <div class="email-container"><p>email</p>
-            <input id="email" type="text"  placeholder="iz unique so watch out">
-        </div>
         <div class="password-container"><p>password</p>
             <input id ="pass" type="password" placeholder="make it decent">
         </div>
         <div class="btn-container">
-            <button  id ="btn" class="btn-style">Sign up</button>
+            <button  id ="btn" class="btn-style">Sign in</button>
         </div>
     </div>
-    <a href ="signin.html">Already have an account? Sign In!</a>
+    <div [routerLink] = "['/signup']">Already have an account? Sign In!</div>
   </div>
 </ion-content>
