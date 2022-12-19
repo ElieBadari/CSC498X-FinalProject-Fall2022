@@ -15,7 +15,7 @@ $flag = true;
 //validate user
 //-------------
 if (isset($_POST["username"]) && $_POST["username"] != ""){
-    $check_user_query = $mysqli->prepare("SELECT `userId` FROM `users` WHERE `username` = ?");
+    $check_user_query = $mysqli->prepare("SELECT user_id FROM users WHERE username = ?");
     $param_username = filter_data($_POST["username"]);
     $check_user_query->bind_param("s",$param_username);
     if($check_user_query->execute()){
@@ -37,7 +37,7 @@ if (isset($_POST["username"]) && $_POST["username"] != ""){
 //validate email
 //--------------
 if (isset($_POST["email"]) && $_POST["email"] != ""){
-    $check_email_query = $mysqli->prepare("SELECT `userId` FROM `users` WHERE `email` = ?");
+    $check_email_query = $mysqli->prepare("SELECT user_id FROM users WHERE email = ?");
     $param_email = filter_data($_POST["email"]);
     $check_email_query->bind_param("s",$param_email);
     if($check_email_query->execute()){
@@ -80,7 +80,7 @@ if (!$flag){
     return;
 }else {
     $response["User Success Values"] = true;
-    $query = $mysqli->prepare("INSERT INTO `users` (`username`, `email`, `password`) VALUES (?,?,?)");
+    $query = $mysqli->prepare("INSERT INTO users (username, email, password) VALUES (?,?,?)");
     $query->bind_param("sss", $username, $email, $pass);
     if ($query->execute()){
         $response["User Success Query"] = true;
