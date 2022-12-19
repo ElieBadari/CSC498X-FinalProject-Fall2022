@@ -76,7 +76,7 @@ $login_query->bind_param("ss",$username,$email);
 if ($login_query->execute()){
     $response["User Login Success"] = true;
     $array = $login_query->get_result();
-    $response["userId"] = $array->fetch_assoc();
+    $response["user_id"] = $array->fetch_assoc();
 }else {
     $response["User Login Success"] = false;
 }
