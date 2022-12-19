@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
   },
   {
-    path: 'tabs',
+    path: 'home',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
