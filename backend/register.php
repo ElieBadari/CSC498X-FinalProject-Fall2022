@@ -4,7 +4,7 @@ include("connection.php");
 include("functions.php");
 
 $username = $email = $pass = "";
-$id = "";
+$id = -1;
 $results = [];
 $response = [];
 $flag = true;

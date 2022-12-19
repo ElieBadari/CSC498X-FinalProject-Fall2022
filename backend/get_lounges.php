@@ -3,7 +3,7 @@
 include("connection.php");
 include("functions.php");
 
-$id = "";
+$id = -1;
 $results = [];
 $response = [];
 $flag = true;
@@ -14,9 +14,11 @@ if (isset($_POST["lounge_id"]) && $_POST["lounge_id"] != ""){
     $get_lounge_query = $mysqli->prepare("SELECT * FROM lounges WHERE lounge_id = ?");
     $get_lounge_query->bind_param("s",$lounge_id);
     if ($get_lounge_query->execute()){
-      $resposne["lounge"] = $get_lounge_query->get_result();
+        $response["lounge Success"] = true;
+        $array = $get_lounge_query->get_result();
+        $resposne["lounge"] = $array->fetch_assoc();
     }else{
-        $response["Error"] = "Error getting lounge";
+        $response["lounge Success"] = false;
     }
 }else {
     //we are getting all lounges
@@ -24,9 +26,10 @@ if (isset($_POST["lounge_id"]) && $_POST["lounge_id"] != ""){
     if ($get_lounges_query->execute()){
         while($lounge = $get_lounge_query->fetch_assoc()){
             $response[] = $lounge;
-        }   
+        }
+        $response["lounges Success"] = true;   
     }else{
-        $response["Error"] = "Error getting lounges";
+        $response["lounges Success"] = false;
     }
 }
 echo json_encode($response);
